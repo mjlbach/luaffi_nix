@@ -10,8 +10,8 @@ end
 execute "packadd packer.nvim"
 
 vim.cmd [[packadd packer.nvim]]
-vim.cmd [[autocmd BufWritePost minimal_init.lua PackerCompile]]
-vim.cmd [[autocmd BufWritePost minimal_init.lua PackerInstall]]
+vim.cmd [[autocmd BufEnter silent! PackerCompile]]
+vim.cmd [[autocmd BufEnter silent! PackerInstall]]
 
 local use = require('packer').use
 require("packer").startup(
@@ -40,4 +40,4 @@ require('telescope').setup {
   }
 }
 require('telescope').load_extension("frecency")
-vim.api.nvim_set_keymap('n', '<leader>f', [[<cmd>lua require('telescope.builtin').find_files()<cr>]], { noremap = true})
+vim.api.nvim_set_keymap('n', '<space>f', [[<cmd>lua require('telescope').extensions.frecency.frecency()<cr>]], { noremap = true})
